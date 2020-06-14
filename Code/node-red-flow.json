@@ -1,0 +1,460 @@
+[
+    {
+        "id": "63742481.e7a9cc",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a5403ffd.10a79",
+        "type": "ibmiot in",
+        "z": "63742481.e7a9cc",
+        "authentication": "apiKey",
+        "apiKey": "edae8b08.567ac8",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "0197",
+        "applicationId": "",
+        "deviceType": "Node",
+        "eventType": "Data",
+        "commandType": "Data",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": false,
+        "allFormats": "",
+        "qos": 0,
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "739a606b.c51f1",
+                "3b904b0e.df0f14",
+                "105e2027.f03ff"
+            ]
+        ]
+    },
+    {
+        "id": "739a606b.c51f1",
+        "type": "function",
+        "z": "63742481.e7a9cc",
+        "name": "Temperature",
+        "func": "msg.payload = msg.payload.d.temperature\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 60,
+        "wires": [
+            [
+                "ff7ce9a4.e711a8",
+                "8de8921e.427d1"
+            ]
+        ]
+    },
+    {
+        "id": "3b904b0e.df0f14",
+        "type": "function",
+        "z": "63742481.e7a9cc",
+        "name": "SoilMoisture",
+        "func": "msg.payload = msg.payload.d.objectTemp\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 380,
+        "wires": [
+            [
+                "fc9a491e.e92ed8",
+                "3f37a611.88225a"
+            ]
+        ]
+    },
+    {
+        "id": "105e2027.f03ff",
+        "type": "function",
+        "z": "63742481.e7a9cc",
+        "name": "Humidity",
+        "func": "msg.payload = msg.payload.d.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "d265b511.bc58f8",
+                "2196fd84.48d4e2"
+            ]
+        ]
+    },
+    {
+        "id": "ff7ce9a4.e711a8",
+        "type": "ui_gauge",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "group": "4cfa037b.8c453c",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "Celsius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#eb0000"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 710,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "d265b511.bc58f8",
+        "type": "ui_gauge",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "group": "4cfa037b.8c453c",
+        "order": 3,
+        "width": 6,
+        "height": 6,
+        "gtype": "wave",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 700,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "fc9a491e.e92ed8",
+        "type": "ui_gauge",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "group": "4cfa037b.8c453c",
+        "order": 2,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Soil Moisture",
+        "label": "Celsius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 710,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8de8921e.427d1",
+        "type": "ui_text",
+        "z": "63742481.e7a9cc",
+        "group": "4cfa037b.8c453c",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "TEMPERATURE",
+        "format": "{{msg.payload}} Degree Celsius",
+        "layout": "col-center",
+        "x": 730,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2196fd84.48d4e2",
+        "type": "ui_text",
+        "z": "63742481.e7a9cc",
+        "group": "4cfa037b.8c453c",
+        "order": 6,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Humidity",
+        "format": "{{msg.payload}}% Percentage",
+        "layout": "col-center",
+        "x": 700,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3f37a611.88225a",
+        "type": "ui_text",
+        "z": "63742481.e7a9cc",
+        "group": "4cfa037b.8c453c",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Soil Moisture",
+        "format": "{{msg.payload}} Degree Celsius",
+        "layout": "col-center",
+        "x": 710,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "d7a316ec.22cf28",
+        "type": "ibmiot out",
+        "z": "63742481.e7a9cc",
+        "authentication": "apiKey",
+        "apiKey": "edae8b08.567ac8",
+        "outputType": "cmd",
+        "deviceId": "00197",
+        "deviceType": "Node1",
+        "eventCommandType": "home",
+        "format": "json",
+        "data": "data",
+        "qos": 0,
+        "name": "IBM IoT",
+        "service": "registered",
+        "x": 700,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "1c28423d.24658e",
+        "type": "ui_button",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "group": "c8eeadbe.e8005",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "MOTOR ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"command\":\"motoron\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 470,
+        "y": 500,
+        "wires": [
+            [
+                "d7a316ec.22cf28",
+                "a11e9660.276e08"
+            ]
+        ]
+    },
+    {
+        "id": "3d67c3dc.b8f7bc",
+        "type": "ui_button",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "group": "c8eeadbe.e8005",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "MOTOR OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"command\":\"motoroff\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 450,
+        "y": 560,
+        "wires": [
+            [
+                "d7a316ec.22cf28",
+                "a11e9660.276e08"
+            ]
+        ]
+    },
+    {
+        "id": "2768fe3e.db0062",
+        "type": "inject",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 800,
+        "wires": [
+            [
+                "b1e8b892.401968"
+            ]
+        ]
+    },
+    {
+        "id": "b1e8b892.401968",
+        "type": "http request",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "api.openweathermap.org/data/2.5/weather?q=Visakhapatnam, IN&appid=fec2d825405fbbcf25d07199d4598427",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "x": 350,
+        "y": 800,
+        "wires": [
+            [
+                "b73d41ff.8cd75",
+                "abfbbc64.db68a",
+                "200844b5.b5d94c"
+            ]
+        ]
+    },
+    {
+        "id": "b73d41ff.8cd75",
+        "type": "ui_text",
+        "z": "63742481.e7a9cc",
+        "group": "c8eeadbe.e8005",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperature",
+        "format": "{{msg.payload.main.temp-273.15}} Degree Celsius",
+        "layout": "row-spread",
+        "x": 590,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "abfbbc64.db68a",
+        "type": "ui_text",
+        "z": "63742481.e7a9cc",
+        "group": "c8eeadbe.e8005",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Humidity",
+        "format": "{{msg.payload.main.humidity}} %",
+        "layout": "row-spread",
+        "x": 600,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "200844b5.b5d94c",
+        "type": "ui_text",
+        "z": "63742481.e7a9cc",
+        "group": "c8eeadbe.e8005",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Atmospheric Pressure",
+        "format": "{{msg.payload.main.pressure}} atm",
+        "layout": "row-spread",
+        "x": 600,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "f85cf77c.1c2958",
+        "type": "ui_text",
+        "z": "63742481.e7a9cc",
+        "group": "c8eeadbe.e8005",
+        "order": 6,
+        "width": 6,
+        "height": 2,
+        "name": "",
+        "label": "MOTOR STATUS",
+        "format": "{{msg.payload.command}}",
+        "layout": "row-spread",
+        "x": 710,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "a11e9660.276e08",
+        "type": "function",
+        "z": "63742481.e7a9cc",
+        "name": "",
+        "func": "if(msg.payload.command == \"motoron\")\n{\n    msg.payload.command=\"ON\";\n}\nelse{msg.payload.command=\"OFF\";}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 630,
+        "y": 600,
+        "wires": [
+            [
+                "f85cf77c.1c2958"
+            ]
+        ]
+    },
+    {
+        "id": "edae8b08.567ac8",
+        "type": "ibmiot",
+        "z": "",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "gt89go.messaging.internetofthings.ibmcloud.com",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "4cfa037b.8c453c",
+        "type": "ui_group",
+        "z": "",
+        "name": "",
+        "tab": "6869adcb.7207e4",
+        "order": 1,
+        "disp": true,
+        "width": 18,
+        "collapse": false
+    },
+    {
+        "id": "c8eeadbe.e8005",
+        "type": "ui_group",
+        "z": "",
+        "name": "Weather",
+        "tab": "6869adcb.7207e4",
+        "order": 2,
+        "disp": true,
+        "width": 7,
+        "collapse": false
+    },
+    {
+        "id": "6869adcb.7207e4",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Smart Agriculture",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
